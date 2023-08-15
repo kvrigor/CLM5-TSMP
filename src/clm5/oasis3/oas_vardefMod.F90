@@ -35,6 +35,8 @@ module oas_vardefMod
   integer ::   oas_id_sh      ! sensible heat flux (W/m2)
   integer ::   oas_id_lh      ! latent heat flux (W/m2)
   integer ::   oas_id_st      ! surface temperature (K)
+  integer ::   oas_id_rh      ! dynamical resistance heat (m/s)
+  integer ::   oas_id_rm      ! dynamical resistance momentum (m/s)
 #endif
 
 end module oas_vardefMod

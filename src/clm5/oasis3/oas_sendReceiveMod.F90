@@ -121,6 +121,8 @@ contains
      call oasis_put(oas_id_sh, seconds_elapsed,lnd2atm_inst%eflx_sh_tot_grc, info)   ! "CLM_SHFLX"
      call oasis_put(oas_id_lh, seconds_elapsed,lnd2atm_inst%eflx_lh_tot_grc, info)   ! "CLM_LHFLX"
      call oasis_put(oas_id_st, seconds_elapsed,lnd2atm_inst%t_sf_grc, info)          ! "CLM_TGRND"
+!     call oasis_put(oas_id_rh, seconds_elapsed,lnd2atm_inst%rah1_grc, info)          ! "CLM_RAH1"
+!     call oasis_put(oas_id_rm, seconds_elapsed,lnd2atm_inst%ram1_grc, info)          ! "CLM_RAM1"
 
   end subroutine oas_send_icon
 #endif

@@ -133,6 +133,11 @@ contains
     IF (ierror /= 0) CALL oasis_abort(oas_comp_id, oas_comp_name, 'Failure in oasis_def_var for CLMLHFLX.')
     CALL oasis_def_var(oas_id_st, "CLMTGRND", grid_id, var_nodims, OASIS_Out, OASIS_Real, ierror) !19
     IF (ierror /= 0) CALL oasis_abort(oas_comp_id, oas_comp_name, 'Failure in oasis_def_var for CLMTGRND.')
+    CALL oasis_def_var(oas_id_rh, "CLMRAH1" , grid_id, var_nodims, OASIS_In, OASIS_Real, ierror)  !20
+    IF (ierror /= 0) CALL oasis_abort(oas_comp_id, oas_comp_name, 'Failure in oasis_def_var for CLMGSPRE.')
+    CALL oasis_def_var(oas_id_rm, "CLMRAM1" , grid_id, var_nodims, OASIS_In, OASIS_Real, ierror)  !21
+    IF (ierror /= 0) CALL oasis_abort(oas_comp_id, oas_comp_name, 'Failure in oasis_def_var for CLMGSPRE.')
+
 
 #endif
 
