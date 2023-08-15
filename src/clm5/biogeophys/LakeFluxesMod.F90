@@ -219,6 +219,11 @@ contains
          qflx_evap_tot    =>    waterflux_inst%qflx_evap_tot_patch     , & ! Output: [real(r8) (:)   ]  qflx_evap_soi + qflx_evap_can + qflx_tran_veg     
          qflx_prec_grnd   =>    waterflux_inst%qflx_prec_grnd_patch    , & ! Output: [real(r8) (:)   ]  water onto ground including canopy runoff [kg/(m2 s)]
 
+#ifdef COUP_OAS_ICON
+         t_sf_patch       =>    temperature_inst%t_sf_patch            , & ! Output: [real(r8) (:)   ]  patch surface temperature (K)
+         q_sf_patch       =>    waterstate_inst%q_sf_patch             , & ! Output: [real(r8) (:)   ]  patch surface humidity (kg/kg)
+         rah1             =>    frictionvel_inst%rah1_patch            , & ! Output: [real(r8) (:)   ]  patch aerodynamical resistance (s/m)
+#endif
          t_veg            =>    temperature_inst%t_veg_patch           , & ! Output: [real(r8) (:)   ]  vegetation temperature (Kelvin)                   
          t_ref2m          =>    temperature_inst%t_ref2m_patch         , & ! Output: [real(r8) (:)   ]  2 m height surface air temperature (Kelvin)       
          t_grnd           =>    temperature_inst%t_grnd_col            , & ! Output: [real(r8) (:)   ]  ground temperature (Kelvin)                       
@@ -596,6 +601,11 @@ contains
          eflx_lh_tot(p)   = htvp(c)*qflx_evap_soi(p)
          eflx_lh_grnd(p)  = htvp(c)*qflx_evap_soi(p)
 
+#ifdef COUP_OAS_ICON
+         t_sf_patch(p)  = t_grnd(p)
+         q_sf_patch(p)  = qsatg(c)+qsatgdT(c)*(t_grnd(c)-t_grnd_temp) !qaf(p)
+         rah1(p)  = rah(p)
+#endif
          ! 2 m height air temperature
          t_ref2m(p) = thm(p) + temp1(p)*dth(p)*(1._r8/temp12m(p) - 1._r8/temp1(p))
 

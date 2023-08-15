@@ -197,7 +197,8 @@ contains
          t_veg                  => temperature_inst%t_veg_patch                 , & ! Output: [real(r8) (:)   ]  vegetation temperature (Kelvin)                                       
 #ifdef COUP_OAS_ICON
          t_sf_patch             => temperature_inst%t_sf_patch                  , & ! Output: [real(r8) (:)   ]  patch surface temperature (K)
-!         q_sf_patch             => waterstate_inst%q_sf_patch                   , & ! Output: [real(r8) (:)   ]  patch surface humidity (kg/kg)
+         q_sf_patch             => waterstate_inst%q_sf_patch                   , & ! Output: [real(r8) (:)   ]  patch surface humidity (kg/kg)
+         rah1                   => frictionvel_inst%rah1_patch                  , & ! Output: [real(r8) (:)   ]  patch aerodynamical resistance (s/m)
 #endif
          q_ref2m                => waterstate_inst%q_ref2m_patch                , & ! Output: [real(r8) (:)   ]  2 m height surface specific humidity (kg/kg)                          
          rh_ref2m_r             => waterstate_inst%rh_ref2m_r_patch             , & ! Output: [real(r8) (:)   ]  Rural 2 m height surface relative humidity (%)                        
@@ -346,6 +347,9 @@ contains
          end if
 
          ram1(p) = ram  !pass value to global variable
+#ifdef COUP_OAS_ICON
+         rah1(p) = rah
+#endif
 
          ! Output to patch-level data structures
          ! Derivative of fluxes with respect to ground temperature
@@ -379,7 +383,7 @@ contains
 
 #ifdef COUP_OAS_ICON
          t_sf_patch(p)     = t_grnd(c)
-!         q_sf_patch(p)     = qg(c)
+         q_sf_patch(p)     = qg(c)
 #endif
 
          ! 2 m height air temperature

@@ -69,6 +69,9 @@ module WaterstateType
      real(r8), pointer :: h2osno_top_col         (:)   ! col top-layer mass of snow  [kg]
      real(r8), pointer :: sno_liq_top_col        (:)   ! col snow liquid water fraction (mass), top layer  [fraction]
 
+#ifdef COUP_OAS_ICON
+     real(r8), pointer :: q_sf_patch             (:)   ! patch surface specific humidity (kg/kg)
+#endif
      real(r8), pointer :: q_ref2m_patch          (:)   ! patch 2 m height surface specific humidity (kg/kg)
      real(r8), pointer :: rh_ref2m_patch         (:)   ! patch 2 m height surface relative humidity (%)
      real(r8), pointer :: rh_ref2m_r_patch       (:)   ! patch 2 m height surface relative humidity - rural (%)
@@ -224,6 +227,9 @@ contains
     allocate(this%qg_col                 (begc:endc))                     ; this%qg_col                 (:)   = nan   
     allocate(this%dqgdT_col              (begc:endc))                     ; this%dqgdT_col              (:)   = nan   
     allocate(this%qaf_lun                (begl:endl))                     ; this%qaf_lun                (:)   = nan
+#ifdef COUP_OAS_ICON
+    allocate(this%q_sf_patch             (begp:endp))                     ; this%q_sf_patch             (:)   = nan
+#endif
     allocate(this%q_ref2m_patch          (begp:endp))                     ; this%q_ref2m_patch          (:)   = nan
     allocate(this%rh_ref2m_patch         (begp:endp))                     ; this%rh_ref2m_patch         (:)   = nan
     allocate(this%rh_ref2m_u_patch       (begp:endp))                     ; this%rh_ref2m_u_patch       (:)   = nan
@@ -411,6 +417,13 @@ contains
     !                  if need be.
 
     ! Humidity
+
+#ifdef COUP_OAS_ICON
+    this%q_sf_patch(begp:endp) = spval
+    call hist_addfld1d (fname='QSF', units='kg/kg',  &
+         avgflag='A', long_name='surface specific humidity', &
+         ptr_patch=this%q_sf_patch)
+#endif
 
     this%q_ref2m_patch(begp:endp) = spval
     call hist_addfld1d (fname='Q2M', units='kg/kg',  &
