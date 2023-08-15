@@ -81,6 +81,10 @@ contains
     call oasis_get(oas_id_cr, seconds_elapsed, atm2lnd_inst%forc_rain_not_downscaled_grc, info)
     call oasis_get(oas_id_gr, seconds_elapsed, atm2lnd_inst%forc_snow_not_downscaled_grc, info)
 
+    ! positive defined wind speed
+    atm2lnd_inst%forc_u_grc = ABS(atm2lnd_inst%forc_u_grc)
+    atm2lnd_inst%forc_v_grc = ABS(atm2lnd_inst%forc_v_grc)
+
     !SPo: some postprocessing of atm2lnd is missing; may better use x2l 
 
     do g=bounds%begg,bounds%endg
