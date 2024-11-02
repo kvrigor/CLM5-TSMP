@@ -3,7 +3,7 @@ module test_shr_abort
   ! Tests of shr_abort_mod: version used in unit tests that throws a pfunit exception
   ! rather than aborting
 
-  use pfunit_mod
+  use funit
   use shr_abort_mod
   use shr_kind_mod , only : r8 => shr_kind_r8
 

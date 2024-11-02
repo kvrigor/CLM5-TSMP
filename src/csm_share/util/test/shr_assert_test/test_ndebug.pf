@@ -2,7 +2,7 @@ module test_ndebug
 
 ! Test that if NDEBUG is defined, shr_assert macros do nothing.
 
-use pfunit_mod
+use funit
 
 #define NDEBUG
 #include "shr_assert.h"

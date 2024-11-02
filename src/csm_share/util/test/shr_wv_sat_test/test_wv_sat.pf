@@ -1,6 +1,6 @@
 module test_wv_sat
 
-use pfunit_mod
+use funit
 
 use shr_kind_mod, only: r8 => shr_kind_r8
 use shr_const_mod, only: &

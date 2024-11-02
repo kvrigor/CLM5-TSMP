@@ -1,6 +1,6 @@
 module test_erf_r4
 
-use pfunit_mod
+use funit
 
 use shr_kind_mod, only: &
      r4 => shr_kind_r4

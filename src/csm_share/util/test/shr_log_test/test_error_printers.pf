@@ -1,6 +1,6 @@
 module test_error_printers
 
-use pfunit_mod
+use funit
 
 ! Tests for routines that create error messages. We obviously can't automate the
 ! process of deciding whether a message is correct or helpful, but we can test

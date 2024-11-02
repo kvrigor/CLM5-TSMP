@@ -2,7 +2,7 @@ module test_shr_string
 
   ! Tests of shr_string_mod
 
-  use pfunit_mod
+  use funit
   use shr_string_mod
 
   implicit none

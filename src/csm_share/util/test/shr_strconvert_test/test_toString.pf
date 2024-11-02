@@ -6,7 +6,7 @@ module test_toString
 ! not worth invoking complex methods such as genf90, cpp hacks, or parameterized
 ! pFUnit tests to handle the different types.
 
-use pfunit_mod
+use funit
 
 use shr_kind_mod, only: &
      i4 => shr_kind_i4, &

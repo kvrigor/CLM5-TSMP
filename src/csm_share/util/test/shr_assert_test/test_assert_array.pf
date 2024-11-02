@@ -2,7 +2,7 @@ module test_assert_array
 
 ! Test shr_assert_all and shr_assert_any.
 
-use pfunit_mod
+use funit
 
 use shr_assert_mod, only: &
      shr_assert_all, &
