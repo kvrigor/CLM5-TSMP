@@ -42,7 +42,6 @@ jobs:
       OASIS_INSTALL_PREFIX: ${{ github.workspace }}/oasis3-mct/install
       PFUNIT_TAG: v4.10.0
       PFUNIT_INSTALL_PREFIX:  ${{ github.workspace }}/pFUnit/install
-      CMAKE_BUILD_PARALLEL_LEVEL: 4
 
     steps:
       - uses: actions/checkout@v4
