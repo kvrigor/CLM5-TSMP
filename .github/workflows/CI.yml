@@ -124,7 +124,7 @@ jobs:
           tree -FUCh --du --filelimit 20 -L 2 ${PFUNIT_INSTALL_PREFIX}
 
       #
-      # eCLM
+      # Configure, build, and install eCLM
       #
       - name: Configure eCLM
         run: |
@@ -147,3 +147,11 @@ jobs:
 
       - name: Install eCLM namelist generator
         run: pip3 install --user ./namelist_generator
+
+      #
+      # Run tests
+      #
+      - name: Configure eCLM
+        run: |
+          cd $BUILD_DIR
+          ctest -v --output-on-failure
