@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     strategy:
+      fail-fast: false
       matrix:
         config:
         - {
@@ -87,8 +88,6 @@ jobs:
         name: Add OASIS to CMAKE_PREFIX_PATH
         run: |
           echo "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:${OASIS_INSTALL_PREFIX}" >> $GITHUB_ENV
-          echo "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}"
-          tree -FUCh --du --filelimit 20 -L 2 ${OASIS_INSTALL_PREFIX}
       #
       # pFUnit
       #
@@ -119,8 +118,6 @@ jobs:
       - name: Add pFUnit to CMAKE_PREFIX_PATH
         run: |
           echo "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:${PFUNIT_INSTALL_PREFIX}" >> $GITHUB_ENV
-          echo "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}"
-          tree -FUCh --du --filelimit 20 -L 2 ${PFUNIT_INSTALL_PREFIX}
 
       #
       # Configure, build, and install eCLM
@@ -150,7 +147,7 @@ jobs:
       #
       # Run tests
       #
-      - name: Configure eCLM
+      - name: Run eCLM tests
         run: |
           cd $BUILD_DIR
-          ctest -v --output-on-failure
+          ctest -V --output-on-failure
