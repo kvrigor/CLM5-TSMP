@@ -115,6 +115,7 @@ contains
          p2c_scale_type='unity', c2l_scale_type= 'urbanf', l2g_scale_type='unity')
 
     do g = bounds%begg,bounds%endg
+       print *, "g, lnd2atm_inst%eflx_lwrad_out_grc(g)", g, lnd2atm_inst%eflx_lwrad_out_grc(g)
        lnd2atm_inst%t_rad_grc(g) = sqrt(sqrt(lnd2atm_inst%eflx_lwrad_out_grc(g)/sb))
     end do
 
