@@ -1,3 +1,5 @@
+`dev-snow`: Contains `dev-check-all` and `dev-skip-check-after-DA`. NO ADDITINOAL SNOW PARAMETERS READ FROM INPUT.
+
 # eCLM
 
 [![CI](https://github.com/HPSCTerrSys/eCLM/actions/workflows/CI.yml/badge.svg)](https://github.com/HPSCTerrSys/eCLM/actions/workflows/CI.yml)
