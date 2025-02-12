@@ -1,5 +1,7 @@
-`dev-add-snow-params`-Branch: Generated for usage of eCLM-PDAF by
-Buliao Guan. Adds namelist input of snow parameters.
+`dev-snow-params`: Contains
+- `dev-check-all`
+- `dev-skip-check-after-DA`
+- `dev-add-snow-params`
 
 # eCLM
 
